@@ -1,31 +1,20 @@
-import com.example.EncryptionStrategy;
+package factory;
 
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Create encryption strategies
-        EncryptionStrategy aesEncryptionStrategy = new AESEncryptionStrategy();
-        EncryptionStrategy rsaEncryptionStrategy = new RSAEncryptionStrategy();
-        EncryptionStrategy blowfishEncryptionStrategy = new BlowfishEncryptionStrategy();
-        
 
-        // Create encryption processor
-        EncryptionProcessor encryptionProcessor = new EncryptionProcessor();
+        System.out.println("please provide an OS to run our phone");
 
-        // Encrypt data using AES encryption
-        encryptionProcessor.setEncryptionStrategy(aesEncryptionStrategy);
-        String encryptedData = encryptionProcessor.encryptData("Hello, World!");
-        System.out.println(encryptedData);
+        Scanner scanner = new Scanner(System.in);
 
-        // Encrypt data using RSA encryption
-        encryptionProcessor.setEncryptionStrategy(rsaEncryptionStrategy);
-        encryptedData = encryptionProcessor.encryptData("data for encrypt");
-        System.out.println(encryptedData);
+        String str = scanner.nextLine();
 
-        // Encrypt data using Blowfish encryption
-        encryptionProcessor.setEncryptionStrategy(blowfishEncryptionStrategy);
-        encryptedData = encryptionProcessor.encryptData("mydata for encrypt");
-        System.out.println(encryptedData);
+        OS os = OSFactory.factoryMethod(str);
+
+        os.printMobile();
+
 
     }
 }
